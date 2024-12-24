@@ -383,7 +383,7 @@ class Scan {
             transform: boundingBox.simdWorldTransform,
             center: SIMD3<Float>(),
             extent: boundingBox.extent
-          ) { object, error in
+          ) { object, _ in
             if let referenceObject = object {
               // Pass the feature points to the point cloud visualization.
               self.pointCloud.update(with: referenceObject.rawFeaturePoints, localFor: boundingBox)
