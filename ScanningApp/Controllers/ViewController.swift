@@ -15,19 +15,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
     
     static var instance: ViewController?
     
-    @IBOutlet weak var sceneView: ARSCNView!
-    @IBOutlet weak var blurView: UIVisualEffectView!
-    @IBOutlet weak var nextButton: RoundedButton!
+    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var blurView: UIVisualEffectView!
+    @IBOutlet var nextButton: RoundedButton!
     var backButton: UIBarButtonItem!
     var mergeScanButton: UIBarButtonItem!
-    @IBOutlet weak var instructionView: UIVisualEffectView!
-    @IBOutlet weak var instructionLabel: MessageLabel!
-    @IBOutlet weak var loadModelButton: RoundedButton!
-    @IBOutlet weak var flashlightButton: FlashlightButton!
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var sessionInfoView: UIVisualEffectView!
-    @IBOutlet weak var sessionInfoLabel: UILabel!
-    @IBOutlet weak var toggleInstructionsButton: RoundedButton!
+    @IBOutlet var instructionView: UIVisualEffectView!
+    @IBOutlet var instructionLabel: MessageLabel!
+    @IBOutlet var loadModelButton: RoundedButton!
+    @IBOutlet var flashlightButton: FlashlightButton!
+    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var sessionInfoView: UIVisualEffectView!
+    @IBOutlet var sessionInfoLabel: UILabel!
+    @IBOutlet var toggleInstructionsButton: RoundedButton!
     
     internal var internalState: State = .startARSession
     
