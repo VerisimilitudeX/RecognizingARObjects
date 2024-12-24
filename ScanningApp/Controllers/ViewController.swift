@@ -125,7 +125,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
     // MARK: - UI Event Handling
     
     @IBAction func restartButtonTapped(_ sender: Any) {
-        if let scan = scan, scan.boundingBoxExists {
+        if let scan, scan.boundingBoxExists {
             let title = "Start over?"
             let message = "Discard the current scan and start over?"
             self.showAlert(title: title, message: message, buttonTitle: "Yes", showCancel: true) { _ in
@@ -249,7 +249,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
         print(title + "\n" + message)
         
         var actions = [UIAlertAction]()
-        if let buttonTitle = buttonTitle {
+        if let buttonTitle {
             actions.append(UIAlertAction(title: buttonTitle, style: .default, handler: buttonHandler))
         }
         if showCancel {
@@ -285,7 +285,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
         }
         
         // ...otherwise attempt to create a reference object from the current scan.
-        guard let scan = scan, scan.boundingBoxExists else {
+        guard let scan, scan.boundingBoxExists else {
             print("Error: Bounding box not yet created.")
             return
         }
@@ -405,7 +405,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
             case .notReady, .testing:
                 break
             case .scanning:
-                if let scan = scan {
+                if let scan {
                     switch scan.state {
                     case .ready:
                         state = .notReady
@@ -485,7 +485,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
             self.testRun?.referenceObject?.mergeInBackground(with: referenceObject, completion: { (mergedObject, error) in
                 let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
                 
-                if let mergedObject = mergedObject {
+                if let mergedObject {
                     self.testRun?.setReferenceObject(mergedObject, screenshot: nil)
                     self.showAlert(title: "Merge successful", message: "The other scan has been merged into this scan.",
                                    buttonTitle: "OK", showCancel: false)
@@ -591,7 +591,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UI
     
     override var shouldAutorotate: Bool {
         // Lock UI rotation after starting a scan
-        if let scan = scan, scan.state != .ready {
+        if let scan, scan.state != .ready {
             return false
         }
         return true

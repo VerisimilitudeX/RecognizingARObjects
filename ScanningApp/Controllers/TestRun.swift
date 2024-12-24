@@ -55,7 +55,7 @@ class TestRun {
     
     func setReferenceObject(_ object: ARReferenceObject, screenshot: UIImage?) {
         referenceObject = object
-        if let screenshot = screenshot {
+        if let screenshot {
             previewImage = screenshot
         }
         detections = 0

@@ -11,7 +11,7 @@ class Message {
     private(set) var text: NSMutableAttributedString
     
     init(_ body: String, title: String? = nil) {
-        if let title = title {
+        if let title {
             // Make the title bold
             text = NSMutableAttributedString(string: "\(title)\n\(body)")
             let titleRange = NSRange(location: 0, length: title.count)

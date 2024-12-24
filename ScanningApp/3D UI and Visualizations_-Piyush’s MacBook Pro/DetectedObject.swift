@@ -24,7 +24,7 @@ class DetectedObject: SCNNode {
     private let referenceObject: ARReferenceObject
     
     func set3DModel(_ url: URL?) {
-        if let url = url, let model = load3DModel(from: url) {
+        if let url, let model = load3DModel(from: url) {
             customModel?.removeFromParentNode()
             customModel = nil
             originVis.removeFromParentNode()

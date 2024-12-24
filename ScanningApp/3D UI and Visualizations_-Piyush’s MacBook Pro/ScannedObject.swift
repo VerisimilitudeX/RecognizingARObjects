@@ -137,7 +137,7 @@ class ScannedObject: SCNNode {
     private func updateOrCreateGhostBoundingBox() {
         // Perform a hit test against the feature point cloud.
         guard let result = sceneView.smartHitTest(ViewController.instance!.screenCenter) else {
-            if let ghostBoundingBox = ghostBoundingBox {
+            if let ghostBoundingBox {
                 ghostBoundingBox.removeFromParentNode()
                 self.ghostBoundingBox = nil
                 NotificationCenter.default.post(name: ScannedObject.ghostBoundingBoxRemovedNotification, object: nil)
@@ -174,7 +174,7 @@ class ScannedObject: SCNNode {
     func moveOriginToBottomOfBoundingBox() {
         // Only move the origin to the bottom of the bounding box if it hasn't been
         // repositioned by the user yet.
-        guard let boundingBox = boundingBox, let origin = self.origin, !origin.positionHasBeenAdjustedByUser else { return }
+        guard let boundingBox, let origin = self.origin, !origin.positionHasBeenAdjustedByUser else { return }
         origin.simdPosition.y = -boundingBox.extent.y / 2
     }
     
@@ -182,7 +182,7 @@ class ScannedObject: SCNNode {
         let offset = worldPos - self.simdWorldPosition
         self.simdWorldPosition = worldPos
         
-        if let boundingBox = boundingBox {
+        if let boundingBox {
             // Adjust the position of the bounding box to compensate for the
             // move, so that the bounding box stays where it was.
             boundingBox.simdWorldPosition -= offset
@@ -190,7 +190,7 @@ class ScannedObject: SCNNode {
     }
     
     func updateOnEveryFrame() {
-        if let boundingBox = boundingBox {
+        if let boundingBox {
             boundingBox.updateOnEveryFrame()
             
             if boundingBox.simdPosition != [0, 0, 0] {
@@ -204,7 +204,7 @@ class ScannedObject: SCNNode {
     }
     
     func scaleBoundingBox(scale: CGFloat) {
-        guard let boundingBox = boundingBox else { return }
+        guard let boundingBox else { return }
         
         let oldYExtent = boundingBox.extent.y
         

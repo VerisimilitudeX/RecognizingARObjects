@@ -132,7 +132,7 @@ extension SCNNode {
     
     /// Wrapper for SceneKit function to use SIMD vectors and a typed dictionary.
     open func hitTestWithSegment(from pointA: SIMD3<Float>, to pointB: SIMD3<Float>, options: [SCNHitTestOption: Any]? = nil) -> [SCNHitTestResult] {
-        if let options = options {
+        if let options {
             var rawOptions = [String: Any]()
             for (key, value) in options {
                 switch (key, value) {

@@ -30,8 +30,8 @@ extension ViewController {
             // No feedback needed when tracking is normal.
             // Defer clearing the info label if the last message hasn't reached its expiration time.
             let now = Date().timeIntervalSince1970
-            if let startTimeOfLastMessage = startTimeOfLastMessage,
-                let expirationTimeOfLastMessage = expirationTimeOfLastMessage,
+            if let startTimeOfLastMessage,
+                let expirationTimeOfLastMessage,
                 now - startTimeOfLastMessage < expirationTimeOfLastMessage {
                 let timeToKeepLastMessageOnScreen = expirationTimeOfLastMessage - (now - startTimeOfLastMessage)
                 startMessageExpirationTimer(duration: timeToKeepLastMessageOnScreen)

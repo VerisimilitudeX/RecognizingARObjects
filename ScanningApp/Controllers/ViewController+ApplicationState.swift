@@ -192,7 +192,7 @@ extension ViewController {
         case .notReady:
             state = .startARSession
         case .scanning:
-            if let scan = scan {
+            if let scan {
                 switch scan.state {
                 case .ready:
                     restartButtonTapped(self)
@@ -217,7 +217,7 @@ extension ViewController {
         case .notReady:
             state = .scanning
         case .scanning:
-            if let scan = scan {
+            if let scan {
                 switch scan.state {
                 case .ready:
                     scan.state = .defineBoundingBox
@@ -237,7 +237,7 @@ extension ViewController {
     
     @objc
     func ghostBoundingBoxWasCreated(_ notification: Notification) {
-        if let scan = scan, scan.state == .ready {
+        if let scan, scan.state == .ready {
             DispatchQueue.main.async {
                 self.nextButton.isEnabled = true
                 self.displayInstruction(Message("Tap 'Next' to create an approximate bounding box around the object you want to scan."))
@@ -247,7 +247,7 @@ extension ViewController {
     
     @objc
     func ghostBoundingBoxWasRemoved(_ notification: Notification) {
-        if let scan = scan, scan.state == .ready {
+        if let scan, scan.state == .ready {
             DispatchQueue.main.async {
                 self.nextButton.isEnabled = false
                 self.displayInstruction(Message("Point at a nearby object to scan."))
@@ -257,7 +257,7 @@ extension ViewController {
     
     @objc
     func boundingBoxWasCreated(_ notification: Notification) {
-        if let scan = scan, scan.state == .defineBoundingBox {
+        if let scan, scan.state == .defineBoundingBox {
             DispatchQueue.main.async {
                 self.nextButton.isEnabled = true
             }

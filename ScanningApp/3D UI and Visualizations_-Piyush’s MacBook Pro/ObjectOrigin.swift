@@ -78,7 +78,7 @@ class ObjectOrigin: SCNNode {
         customModel?.removeFromParentNode()
         customModel = nil
         
-        if let url = url, let model = load3DModel(from: url) {
+        if let url, let model = load3DModel(from: url) {
             ViewController.instance?.sceneView.prepare([model], completionHandler: { _ in
                 self.addChildNode(model)
             })
@@ -103,7 +103,7 @@ class ObjectOrigin: SCNNode {
     }
     
     func adjustToExtent(_ extent: SIMD3<Float>?) {
-        guard let extent = extent else {
+        guard let extent else {
             self.simdScale = [1.0, 1.0, 1.0]
             xAxis.simdScale = [1.0, 1.0, 1.0]
             yAxis.simdScale = [1.0, 1.0, 1.0]

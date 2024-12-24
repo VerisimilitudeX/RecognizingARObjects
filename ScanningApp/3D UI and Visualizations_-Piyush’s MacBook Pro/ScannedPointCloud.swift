@@ -90,7 +90,7 @@ class ScannedPointCloud: SCNNode, PointCloud {
     
     func updateOnEveryFrame() {
         guard !self.isHidden else { return }
-        guard !referenceObjectPoints.isEmpty, let boundingBox = boundingBox else {
+        guard !referenceObjectPoints.isEmpty, let boundingBox else {
             self.pointNode.geometry = nil
             self.preliminaryPointsNode.geometry = nil
             return
