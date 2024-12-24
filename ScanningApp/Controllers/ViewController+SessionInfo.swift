@@ -63,7 +63,7 @@ extension ViewController {
     cancelMessageExpirationTimer()
 
     messageExpirationTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) {
-      (timer) in
+      (_) in
       self.cancelMessageExpirationTimer()
       self.sessionInfoLabel.text = ""
       self.sessionInfoView.isHidden = true
