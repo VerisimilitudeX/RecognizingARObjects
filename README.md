@@ -1,4 +1,5 @@
 # Neurological Radiance Fields Research @ University of Victoria
+### Piyush Acharya & Dr. Derek Jacoby
 
 Enhancing object recognition in ARKit using point cloud scope limiting.
 
